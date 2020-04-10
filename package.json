@@ -1,0 +1,17 @@
+{
+  "name": "apps",
+  "version": "1.0.0",
+  "description": "",
+  "author": "kamonotakahashi",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt --port 3333 start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {}
+}
