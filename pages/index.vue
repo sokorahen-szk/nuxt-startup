@@ -1,72 +1,113 @@
 <template>
   <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        apps
-      </h1>
-      <h2 class="subtitle">
-        
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+    <div class="header">
+      <div class="header__wrap">
+        <div class="title">
+          <nuxt-link to="/">{{base.siteTitle}}</nuxt-link>
+        </div>
+        <div class="navi">
+        </div>
       </div>
     </div>
+
+    <div class="content">
+      <div class="content__wrap">
+        <div class="content__text">
+          じゃんけん
+        </div>
+        <div class="content__action">
+          <template v-if="jankenStatus">
+            a
+          </template>
+          <template v-else>
+            <button class="btn success" @click="start">開始</button>
+          </template>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-  components: {
-    Logo
-  }
+  components: {},
+
+  data: () => ({
+    base: {
+      siteTitle: '勝まくりジャンケンゲーム',
+      version:   1.0
+    },
+    jankenStatus: false
+  }),
+
+  methods: {
+    start(e) {
+      this.jankenStatus = true;
+    }
+  },
+
 }
 </script>
 
 <style>
 .container {
-  margin: 0 auto;
-  min-height: 100vh;
+
+}
+
+.container .header {
+  background-color: #99E5FF;
+  box-shadow: 0 0 3px #65D8FF;
+  line-height: 3;
+  border-bottom: 1px #ddd solid;
+}
+.header .header__wrap {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+}
+.header .header__wrap .title {
+  text-shadow: 0 0 1px #ccc;
+  font-weight: bold;
+  padding-left: 10px;
+}
+.header .header__wrap .title a {
+  color: #696969;
+  text-decoration: none;
+}
+.header .header__wrap .title a:hover {
+  color: #A9A9A9;
+  text-decoration: underline;
+}
+
+.container .content {
+  width: 100%;
+}
+
+.container .content .content__wrap {
+  width: 95%;
+  margin: 0 auto;
   text-align: center;
+  position: relative;
+    top: 200px;
 }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+.container .content .content__text {
+  font-size: 52px;
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
+.btn {
+  padding: 10px;
+  font-size: 18px;
+  width: 200px;
+  box-shadow: 0 0 1px #ddd;
+  border-radius: 10px;
+}
+.btn:hover {
+  opacity: 0.8;
+}
+.btn.success {
+  color: #fff;
+  background-color: #9ACD32;
 }
 
-.links {
-  padding-top: 15px;
-}
 </style>
