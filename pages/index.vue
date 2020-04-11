@@ -81,7 +81,7 @@ export default {
           this.cpuSelectJankenActionNumber
         );
 
-        if(judge.indexOf("無条件") === -1) {
+        if(judge.indexOf("完全勝利") === -1) {
           this.gameMessage = `
           コンピュータは、${this.jankenAction[this.cpuSelectJankenActionNumber]} を出しました。<br />
           ${judge} です。
