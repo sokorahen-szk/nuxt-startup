@@ -13,11 +13,20 @@
     <div class="content">
       <div class="content__wrap">
         <div class="content__text">
-          じゃんけん
+          <template v-if="jankenStatus">
+            {{startCountDownDefault}}
+          </template>
+          <template v-else>
+            じゃんけん
+          </template>
         </div>
         <div class="content__action">
           <template v-if="jankenStatus">
-            a
+            <div class="actions">
+               <button class="btn normal" @click="start">ぐー</button>
+               <button class="btn normal" @click="start">ちょき</button>
+               <button class="btn normal" @click="start">ぱー</button>
+            </div>
           </template>
           <template v-else>
             <button class="btn success" @click="start">開始</button>
@@ -38,15 +47,20 @@ export default {
       siteTitle: '勝まくりジャンケンゲーム',
       version:   1.0
     },
-    jankenStatus: false
+    jankenStatus: false,
+    startCountDownDefault: 3
   }),
 
   methods: {
     start(e) {
       this.jankenStatus = true;
-    }
+      setInterval( () =>{
+        if(0 < this.startCountDownDefault) {
+          this.startCountDownDefault--;
+        }
+      }, 1000);
+    },
   },
-
 }
 </script>
 
@@ -92,7 +106,19 @@ export default {
 }
 
 .container .content .content__text {
-  font-size: 52px;
+  font-size: 5rem;
+  position: absolute;
+  top: -150px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.container .content .content__action {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
 }
 
 .btn {
@@ -108,6 +134,14 @@ export default {
 .btn.success {
   color: #fff;
   background-color: #9ACD32;
+}
+.btn.normal {
+  color: #696969;
+  background-color: #dfdfdf
+}
+.btn.normal:hover {
+  color: #fff;
+  background-color: #696969;
 }
 
 </style>
