@@ -144,6 +144,7 @@ export default {
 
 <style>
 .container {
+  margin: 0px;
 }
 
 .container .header {
